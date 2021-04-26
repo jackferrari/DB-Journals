@@ -1,5 +1,7 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Author;
+import com.example.springtemplate.models.Editor;
 import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,18 @@ public class UserOrmDao {
     public User findUserById(
             @PathVariable("userId") Integer id) {
         return userRepository.findUserById(id);
+    }
+
+    @GetMapping("/api/users/{userId}/authors")
+    public List<Author> findUserAuthors(
+            @PathVariable("userId") Integer id) {
+        return userRepository.findAuthorsForUser(id);
+    }
+
+    @GetMapping("/api/users/{userId}/editors")
+    public List<Editor> findUserEditors(
+            @PathVariable("userId") Integer id) {
+        return userRepository.findEditorsForUser(id);
     }
     
     @PutMapping("/api/users/{userId}")
