@@ -1,5 +1,6 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Journal;
 import com.example.springtemplate.repositories.JournalRepository;
 
@@ -35,6 +36,12 @@ public class JournalOrmDao {
     public Journal findJournalById(
             @PathVariable("journalId") Integer id) {
         return journalRepository.findJournalById(id);
+    }
+
+    @GetMapping("/api/articles/findbyjid/{journalId}")
+    public List<Article> findArticlesById(
+            @PathVariable("journalId") Integer id) {
+        return journalRepository.findArticlesById(id);
     }
     
     @PutMapping("/api/journals/{journalId}")

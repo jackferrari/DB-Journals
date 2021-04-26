@@ -1,6 +1,9 @@
 package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Article;
+import com.example.springtemplate.models.Author;
+import com.example.springtemplate.models.Editor;
+import com.example.springtemplate.models.Journal;
 import com.example.springtemplate.repositories.ArticleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +38,24 @@ public class ArticleOrmDao {
     public Article findArticleById(
             @PathVariable("articleId") Integer id) {
         return articleRepository.findArticleById(id);
+    }
+
+    @GetMapping("/api/authors/findbyaid/{articleId}")
+    public Author findAuthorById(
+            @PathVariable("articleId") Integer id) {
+        return articleRepository.findAuthorById(id);
+    }
+
+    @GetMapping("/api/editors/findbyaid/{articleId}")
+    public Editor findEditorById(
+            @PathVariable("articleId") Integer id) {
+        return articleRepository.findEditorById(id);
+    }
+
+    @GetMapping("/api/journals/findbyaid/{articleId}")
+    public Journal findJournalById(
+            @PathVariable("articleId") Integer id) {
+        return articleRepository.findJournalById(id);
     }
     
     @PutMapping("/api/articles/{articleId}")
