@@ -8,6 +8,17 @@ export const findArticleById = (id) =>
     fetch(`${ARTICLES_URL}/${id}`)
         .then(response => response.json())
 
+export const findArticleAuthor = (id) =>
+    fetch(`${ARTICLES_URL}/${id}/author`)
+        .then(response => response.json())
+
+export const findArticleEditor = (id) =>
+    fetch(`${ARTICLES_URL}/${id}/editor`)
+        .then(response => response.json())
+
+export const findArticleJournal = (id) =>
+    fetch(`${ARTICLES_URL}/${id}/journal`)
+        .then(response => response.json())
 
 export const deleteArticle = (id) =>
     fetch(`${ARTICLES_URL}/${id}`, {
