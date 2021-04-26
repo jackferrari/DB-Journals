@@ -1,5 +1,9 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Author;
+import com.example.springtemplate.models.Editor;
+import com.example.springtemplate.models.Role;
+import com.example.springtemplate.models.Topic;
 import com.example.springtemplate.models.User;
 
 import java.sql.*;
@@ -20,6 +24,8 @@ public class UserJdbcDao {
     String CREATE_USER = "INSERT INTO users VALUES (null, ?, ?, ?, ?, ?, ?)";
     String FIND_ALL_USERS = "SELECT * FROM users";
     String FIND_USER_BY_ID = "SELECT * FROM users WHERE id=?";
+    String FIND_AUTHORS_BY_USER_ID = "SELECT * FROM authors WHERE user_id=?";
+    String FIND_EDITORS_BY_USER_ID = "SELECT * FROM editors WHERE user_if=?";
     String DELETE_USER = "DELETE FROM users WHERE id=?";
     String UPDATE_USER = "UPDATE users SET first_name=?, last_name=?, username=?, password=? WHERE id=?";
 
@@ -30,6 +36,42 @@ public class UserJdbcDao {
 
     private void closeConnection(Connection connection) throws SQLException {
         connection.close();
+    }
+
+    public Integer createUser(User user)
+            throws ClassNotFoundException, SQLException {
+        Integer rowsUpdated = 0;
+        connection = getConnection();
+        statement = connection.prepareStatement(CREATE_USER);
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getPassword());
+        statement.setString(3, user.getFirstName());
+        statement.setString(4, user.getLastName());
+        statement.setString(5, user.getEmail());
+        statement.setString(6, user.getDateOfBirth());
+        rowsUpdated = statement.executeUpdate();
+        closeConnection(connection);
+        return rowsUpdated;
+    }
+
+    public List<User> findAllUsers() throws ClassNotFoundException, SQLException {
+        List<User> users = new ArrayList<User>();
+        connection = getConnection();
+        statement = connection.prepareStatement(FIND_ALL_USERS);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            User user = new User(
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getString("email"),
+                    resultSet.getString("date_of_birth")
+            );
+            users.add(user);
+        }
+        closeConnection(connection);
+        return users;
     }
 
     public User findUserById(Integer id) throws SQLException, ClassNotFoundException {
@@ -50,6 +92,41 @@ public class UserJdbcDao {
         }
         closeConnection(connection);
         return user;
+    }
+
+    public List<Author> findAuthorsByUserId(Integer id) throws SQLException, ClassNotFoundException {
+        List<Author> authors = new ArrayList<Author>();
+        connection = getConnection();
+        statement = connection.prepareStatement(FIND_AUTHORS_BY_USER_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Author author = new Author(
+                    resultSet.getInt("id"),
+                    Topic.getTopicFromString(resultSet.getString("primary_topic")),
+                    resultSet.getInt("user_id")
+            );
+            authors.add(author);
+        }
+        closeConnection(connection);
+        return authors;
+    }
+
+    public List<Editor> findEditorsByUserId(Integer id) throws SQLException, ClassNotFoundException {
+        List<Editor> editors = new ArrayList<Editor>();
+        connection = getConnection();
+        statement = connection.prepareStatement(FIND_EDITORS_BY_USER_ID);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Editor editor = new Editor(
+                    resultSet.getInt("editorId"),
+                    Role.getRoleFromString(resultSet.getString("role")),
+                    resultSet.getInt("userId")
+            );
+            editors.add(editor);
+        }
+        closeConnection(connection);
+        return editors;
     }
 
     public Integer deleteUser(Integer userId) throws SQLException, ClassNotFoundException {
@@ -76,40 +153,6 @@ public class UserJdbcDao {
         return rowsUpdated;
     }
 
-    public List<User> findAllUsers() throws ClassNotFoundException, SQLException {
-        List<User> users = new ArrayList<User>();
-        connection = getConnection();
-        statement = connection.prepareStatement(FIND_ALL_USERS);
-        ResultSet resultSet = statement.executeQuery();
-        while (resultSet.next()) {
-            User user = new User(
-                    resultSet.getString("username"),
-                    resultSet.getString("password"),
-                    resultSet.getString("first_name"),
-                    resultSet.getString("last_name"),
-                    resultSet.getString("email"),
-                    resultSet.getString("date_of_birth")
-            );
-            users.add(user);
-        }
-        closeConnection(connection);
-        return users;
-    }
-    public Integer createUser(User user)
-            throws ClassNotFoundException, SQLException {
-        Integer rowsUpdated = 0;
-        connection = getConnection();
-        statement = connection.prepareStatement(CREATE_USER);
-        statement.setString(1, user.getUsername());
-        statement.setString(2, user.getPassword());
-        statement.setString(3, user.getFirstName());
-        statement.setString(4, user.getLastName());
-        statement.setString(5, user.getEmail());
-        statement.setString(6, user.getDateOfBirth());
-        rowsUpdated = statement.executeUpdate();
-        closeConnection(connection);
-        return rowsUpdated;
-    }
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         System.out.println("JDBC DAO");
         UserJdbcDao dao = new UserJdbcDao();
