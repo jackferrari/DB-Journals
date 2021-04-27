@@ -26,9 +26,9 @@ public class ArticleJdbcDao {
     String FIND_ALL_ARTICLES = "SELECT * FROM articles";
     String FIND_ARTICLE_BY_ID = "SELECT * FROM articles WHERE id=?";
     String FIND_AUTHOR_BY_ARTICLE_ID = "SELECT authors.primary_topic, authors.user_id FROM" +
-            " authors, articles WHERE authors.id=? AND authors.user_id=articles.editor";
+            " authors, articles WHERE authors.id=? AND authors.id=articles.author";
     String FIND_EDITOR_BY_ARTICLE_ID = "SELECT editors.role, editors.user_id FROM" +
-            " editors, articles WHERE id=? AND editors.user_id=articles.editor";
+            " editors, articles WHERE id=? AND editors.id=articles.editor";
     String FIND_JOURNAL_BY_ARTICLE_ID = "SELECT journals.name, journals.topic, journals.release_date, journals.volume FROM" +
             " journals, articles WHERE id=? AND articles.journal=journals.id";
     String DELETE_ARTICLE = "DELETE FROM articles WHERE id=?";
