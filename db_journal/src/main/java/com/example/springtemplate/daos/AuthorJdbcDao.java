@@ -26,8 +26,8 @@ public class AuthorJdbcDao {
   String FIND_ALL_AUTHORS = "SELECT * FROM authors";
   String FIND_AUTHOR_BY_ID = "SELECT * FROM authors WHERE id=?";
   String FIND_ARTICLES_OF_AUTHOR = "SELECT * FROM articles WHERE articles.author=?";
-  String FIND_AUTHOR_USERS = "SELECT users.first_name, users.last_name, users.username, users.username, users.password, users.email, users.date_of_birth\n" +
-          " FROM users, authors WHERE users.id=authors.user_id";
+  String FIND_AUTHOR_USERS = "SELECT users.first_name, users.last_name, users.username, users.username, users.password, users.email, users.date_of_birth " +
+          "FROM users, authors where users.id=authors.user_id";
   String DELETE_AUTHOR = "DELETE FROM authors WHERE id=?";
   String UPDATE_AUTHOR = "UPDATE authors SET primary_topic=?, user_id=? WHERE id=?";
 
