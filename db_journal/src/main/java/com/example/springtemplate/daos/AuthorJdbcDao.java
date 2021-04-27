@@ -25,6 +25,8 @@ public class AuthorJdbcDao {
   String CREATE_AUTHOR = "INSERT INTO authors VALUES (null, ?, ?)";
   String FIND_ALL_AUTHORS = "SELECT * FROM authors";
   String FIND_AUTHOR_BY_ID = "SELECT * FROM authors WHERE id=?";
+  String FIND_ARTICLES_OF_AUTHOR = "SELECT * FROM articles, authors WHERE authors.id=? AND authors.id=articles.author";
+  String FIND_AUTHOR_USERS = "SELECT * FROM users, authors WHERE authors.id=? AND users.id = authors.user_id;";
   String DELETE_AUTHOR = "DELETE FROM authors WHERE id=?";
   String UPDATE_AUTHOR = "UPDATE authors SET primary_topic=?, user_id=? WHERE id=?";
 
@@ -81,6 +83,46 @@ public class AuthorJdbcDao {
     }
     closeConnection(connection);
     return author;
+  }
+
+  public List<Article> findArticlesOfAuthor(Integer id) throws SQLException, ClassNotFoundException {
+    List<Article> articles = new ArrayList<Article>();
+    connection = getConnection();
+    statement = connection.prepareStatement(FIND_ARTICLES_OF_AUTHOR);
+    ResultSet resultSet = statement.executeQuery();
+    if (resultSet.next()) {
+      Article article = new Article(
+              resultSet.getString("title"),
+              resultSet.getString("content"),
+              resultSet.getString("bibliography"),
+              resultSet.getInt("author"),
+              resultSet.getInt("editor"),
+              resultSet.getInt("journal")
+      );
+      articles.add(article);
+    }
+    closeConnection(connection);
+    return articles;
+  }
+
+  public List<User> findAuthorUsers(Integer id) throws SQLException, ClassNotFoundException {
+    List<User> users= new ArrayList<User>();
+    connection = getConnection();
+    statement = connection.prepareStatement(FIND_AUTHOR_USERS);
+    ResultSet resultSet = statement.executeQuery();
+    if (resultSet.next()) {
+      User user = new User(
+              resultSet.getString("username"),
+              resultSet.getString("password"),
+              resultSet.getString("first_name"),
+              resultSet.getString("last_name"),
+              resultSet.getString("email"),
+              resultSet.getString("date_of_birth")
+      );
+      users.add(user);
+    }
+    closeConnection(connection);
+    return users;
   }
 
   public Integer deleteAuthor(Integer id) throws SQLException, ClassNotFoundException {

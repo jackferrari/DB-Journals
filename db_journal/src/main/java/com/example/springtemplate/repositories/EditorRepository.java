@@ -15,4 +15,10 @@ public interface EditorRepository
     @Query(value = "SELECT * FROM editors WHERE id=:editorId",
             nativeQuery = true)
     public Editor findEditorById(@Param("editorId") Integer id);
+    @Query(value = "SELECT * FROM editors WHERE id=:editorId",
+            nativeQuery = true)
+    public List<Article> findArticlesOfEditors(@Param("editorId") Integer id);
+    @Query(value = "SELECT * FROM users WHERE id=:editorId",
+            nativeQuery = true)
+    public List<Users> findEditorUsers(@Param("editorId") Integer id);
 }
