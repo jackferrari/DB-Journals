@@ -25,7 +25,7 @@ public class UserJdbcDao {
     String FIND_ALL_USERS = "SELECT * FROM users";
     String FIND_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     String FIND_AUTHORS_BY_USER_ID = "SELECT * FROM authors WHERE user_id=?";
-    String FIND_EDITORS_BY_USER_ID = "SELECT * FROM editors WHERE user_if=?";
+    String FIND_EDITORS_BY_USER_ID = "SELECT * FROM editors WHERE user_id=?";
     String DELETE_USER = "DELETE FROM users WHERE id=?";
     String UPDATE_USER = "UPDATE users SET first_name=?, last_name=?, username=?, password=? WHERE id=?";
 

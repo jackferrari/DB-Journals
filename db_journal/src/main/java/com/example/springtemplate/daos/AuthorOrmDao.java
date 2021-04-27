@@ -29,7 +29,7 @@ public class AuthorOrmDao {
         return authorRepository.findArticlesOfAuthors(id);
     }
 
-    @GetMapping("/api/authors/{authorId}/articles")
+    @GetMapping("/api/authors/{authorId}/users")
     public List<User> findAuthorUsers(@PathVariable("authorId") Integer id) {
         return authorRepository.findAuthorUsers(id);
     }
