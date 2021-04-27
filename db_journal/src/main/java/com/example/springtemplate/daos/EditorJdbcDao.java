@@ -22,6 +22,8 @@ public class EditorJdbcDao {
     String CREATE_EDITOR = "INSERT INTO editors VALUES (null, ?, null)";
     String FIND_ALL_EDITORS = "SELECT * FROM editors";
     String FIND_EDITOR_BY_ID = "SELECT * FROM editors WHERE id=?";
+    String FIND_ARTICLES_OF_EDITOR = "SELECT * FROM articles, editors WHERE editors.id=? AND editors.id=articles.editors";
+    String FIND_EDITOR_USERS = "SELECT * FROM users, editors WHERE editos.id=? AND editors.id = editors.user_id;";
     String DELETE_EDITOR = "DELETE FROM editors WHERE id=?";
     String UPDATE_EDITOR = "UPDATE editors SET role=? WHERE id=?";
 
@@ -88,6 +90,47 @@ public class EditorJdbcDao {
         closeConnection(connection);
         return editors;
     }
+
+    public List<Article> findArticlesOfEditor(Integer id) throws SQLException, ClassNotFoundException {
+        List<Article> articles = new ArrayList<Article>();
+        connection = getConnection();
+        statement = connection.prepareStatement(FIND_ARTICLES_OF_EDITOR);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            Article article = new Article(
+                    resultSet.getString("title"),
+                    resultSet.getString("content"),
+                    resultSet.getString("bibliography"),
+                    resultSet.getInt("author"),
+                    resultSet.getInt("editor"),
+                    resultSet.getInt("journal")
+            );
+            articles.add(article);
+        }
+        closeConnection(connection);
+        return articles;
+    }
+
+    public List<User> findEditorUsers(Integer id) throws SQLException, ClassNotFoundException {
+        List<User> users= new ArrayList<User>();
+        connection = getConnection();
+        statement = connection.prepareStatement(FIND_EDITOR_USERS);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            User user = new User(
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getString("email"),
+                    resultSet.getString("date_of_birth")
+            );
+            users.add(user);
+        }
+        closeConnection(connection);
+        return users;
+    }
+
     public Integer createEditor(Editor editor)
             throws ClassNotFoundException, SQLException {
         Integer rowsUpdated = 0;
