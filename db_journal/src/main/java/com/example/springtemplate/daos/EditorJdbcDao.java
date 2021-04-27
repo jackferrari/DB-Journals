@@ -1,5 +1,6 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Editor;
 import com.example.springtemplate.models.Role;
 import com.example.springtemplate.models.User;
