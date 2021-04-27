@@ -1,6 +1,9 @@
 package com.example.springtemplate.repositories;
 
+import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Editor;
+import com.example.springtemplate.models.User;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,5 +23,5 @@ public interface EditorRepository
     public List<Article> findArticlesOfEditors(@Param("editorId") Integer id);
     @Query(value = "SELECT * FROM users WHERE id=:editorId",
             nativeQuery = true)
-    public List<Users> findEditorUsers(@Param("editorId") Integer id);
+    public List<User> findEditorUsers(@Param("editorId") Integer id);
 }
