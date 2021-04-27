@@ -40,19 +40,19 @@ public class ArticleOrmDao {
         return articleRepository.findArticleById(id);
     }
 
-    @GetMapping("/api/authors/findbyaid/{articleId}")
+    @GetMapping("/api/articles/{articleId}/authors")
     public Author findAuthorById(
             @PathVariable("articleId") Integer id) {
         return articleRepository.findAuthorById(id);
     }
 
-    @GetMapping("/api/editors/findbyaid/{articleId}")
+    @GetMapping("/api/articles/{articleId}/editors")
     public Editor findEditorById(
             @PathVariable("articleId") Integer id) {
         return articleRepository.findEditorById(id);
     }
 
-    @GetMapping("/api/journals/findbyaid/{articleId}")
+    @GetMapping("/api/articles/{articleId}/journals")
     public Journal findJournalById(
             @PathVariable("articleId") Integer id) {
         return articleRepository.findJournalById(id);

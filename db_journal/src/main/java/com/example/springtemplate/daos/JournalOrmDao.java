@@ -38,7 +38,7 @@ public class JournalOrmDao {
         return journalRepository.findJournalById(id);
     }
 
-    @GetMapping("/api/articles/findbyjid/{journalId}")
+    @GetMapping("/api/journals/{journalId}/articles")
     public List<Article> findArticlesById(
             @PathVariable("journalId") Integer id) {
         return journalRepository.findArticlesById(id);

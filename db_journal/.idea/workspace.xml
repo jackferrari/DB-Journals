@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a08856-0f63-46b4-8901-5b043c2612ef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/UserJdbcDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/UserJdbcDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/UserOrmDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/UserOrmDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/ArticleOrmDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/ArticleOrmDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/JournalOrmDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springtemplate/daos/JournalOrmDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/react/articles/article-content/article-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/react/articles/article-content/article-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/react/authors/author-content/author-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/react/authors/author-content/author-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/react/editors/editor-content/editor-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/react/editors/editor-content/editor-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/react/journals/journal-content/journal-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/react/journals/journal-content/journal-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/react/users/user-content/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/react/users/user-content/user-service.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

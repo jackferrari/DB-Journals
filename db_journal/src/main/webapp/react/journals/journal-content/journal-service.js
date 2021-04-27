@@ -8,6 +8,9 @@ export const findJournalById = (id) =>
     fetch(`${JOURNAL_URL}/${id}`)
         .then(response => response.json())
 
+export const findArticleByJournalId = (id) =>
+    fetch(`${JOURNAL_URL}/${id}/articles`)
+        .then(response => response.json())
 
 export const deleteJournal = (id) =>
     fetch(`${JOURNAL_URL}/${id}`, {
@@ -35,5 +38,6 @@ export default {
     findJournalById,
     deleteJournal,
     createJournal,
-    updateJournal
+    updateJournal,
+    findArticleByJournalId
 }
