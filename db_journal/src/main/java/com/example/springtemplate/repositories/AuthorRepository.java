@@ -19,4 +19,7 @@ public interface AuthorRepository
     @Query(value = "SELECT * FROM articles WHERE id=:authorId",
             nativeQuery = true)
     public List<Article> findArticlesOfAuthors(@Param("authorId") Integer id);
+    @Query(value = "SELECT * FROM users WHERE id=:authorId",
+            nativeQuery = true)
+    public List<Users> findAuthorUsers(@Param("authorId") Integer id);
 }
