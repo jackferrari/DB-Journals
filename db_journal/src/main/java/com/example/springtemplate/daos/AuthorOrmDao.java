@@ -2,6 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Author;
+import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class AuthorOrmDao {
     }
 
     @GetMapping("/api/authors/{authorId}/articles")
-    public List<Users> findAuthorUsers(@PathVariable("authorId") Integer id) {
+    public List<User> findAuthorUsers(@PathVariable("authorId") Integer id) {
         return authorRepository.findAuthorUsers(id);
     }
     
