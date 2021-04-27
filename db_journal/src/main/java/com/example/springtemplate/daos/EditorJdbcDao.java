@@ -23,8 +23,9 @@ public class EditorJdbcDao {
     String CREATE_EDITOR = "INSERT INTO editors VALUES (null, ?, null)";
     String FIND_ALL_EDITORS = "SELECT * FROM editors";
     String FIND_EDITOR_BY_ID = "SELECT * FROM editors WHERE id=?";
-    String FIND_ARTICLES_OF_EDITOR = "SELECT * FROM articles, editors WHERE editors.id=? AND editors.id=articles.editors";
-    String FIND_EDITOR_USERS = "SELECT * FROM users, editors WHERE editos.id=? AND editors.id = editors.user_id;";
+    String FIND_ARTICLES_OF_EDITOR = "SELECT * FROM articles WHERE editor=?";
+    String FIND_EDITOR_USERS = "SELECT users.first_name, users.last_name, users.username, users.username, users.password, users.email, users.date_of_birth " +
+            "FROM users, editors WHERE users.id=editors.user_id";
     String DELETE_EDITOR = "DELETE FROM editors WHERE id=?";
     String UPDATE_EDITOR = "UPDATE editors SET role=? WHERE id=?";
 
