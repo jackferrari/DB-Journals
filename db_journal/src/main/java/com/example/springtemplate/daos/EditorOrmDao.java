@@ -27,6 +27,15 @@ public class EditorOrmDao {
             @PathVariable("editorId") Integer id) {
         return editorRepository.findEditorById(id);
     }
+
+    @GetMapping("/api/editors/{editorId}/articles")
+    public List<Article> findArticlesOfEditors(@PathVariable("editorId") Integer id) {
+        return editorRepository.findArticlesOfEditors(id);
+    }
+
+    @GetMapping("/api/editors/{editorId}/articles")
+    public List<Users> findEditorUsers(@PathVariable("editorId") Integer id) {
+        return editorRepository.findEditorUsers(id);
     
     @PutMapping("/api/editors/{editorId}")
     public Editor updateEditor(
