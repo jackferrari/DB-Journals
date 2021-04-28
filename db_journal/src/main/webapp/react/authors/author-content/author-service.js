@@ -49,10 +49,7 @@ export default {
     deleteAuthor,
     createAuthor,
     updateAuthor,
-<<<<<<< HEAD
-    findArticlesByAuthorId
-=======
     findArticlesByAuthorId,
     findUsersByAuthorId
->>>>>>> main
 }
+
