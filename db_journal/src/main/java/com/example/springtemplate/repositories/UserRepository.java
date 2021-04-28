@@ -19,8 +19,8 @@ public interface UserRepository
             nativeQuery = true)
     public User findUserById(@Param("userId") Integer id);
 
-    @Query(value = "SELECT users.first_name, users.last_name, users.username, users.username," +
-            "users.password, users.email, users.date_of_birth FROM users, authors WHERE id=:authorId",
+    @Query(value = "select * from users, ( Select user_id from authors where id=:authorId) " +
+            "as wanted_user where users.id = wanted_user.user_id;",
             nativeQuery = true)
     public List<User> findAuthorUsers(@Param("authorId") Integer id);
 
