@@ -2,7 +2,7 @@ const {Link,useHistory} = window.ReactRouterDOM;
 
 import articleService from "./article-service"
 const { useState, useEffect } = React;
-const ArticleList = () => {
+const ArticlesList = () => {
     const [articles, setArticles] = useState([])
     useEffect(() => {
         findAllArticles()
@@ -27,4 +27,4 @@ const ArticleList = () => {
     )
 }
 
-export default ArticleList;
+export default ArticlesList;
