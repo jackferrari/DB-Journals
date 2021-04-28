@@ -1,4 +1,6 @@
 const AUTHORS_URL = "http://localhost:8080/api/authors"
+// needs to finish
+const ARTICLE_URL = "http://localhost:8080/api/..."
 
 export const findAllAuthors = () =>
     fetch(AUTHORS_URL)
@@ -30,10 +32,15 @@ export const updateAuthor = (id, author) =>
     })
         .then(response => response.json())
 
+export const findArticlesByAuthorId = (id) =>
+    fetch(ARTICLE_URL)
+        .then(response => response.json())
+
 export default {
     findAllAuthors,
     findAuthorById,
     deleteAuthor,
     createAuthor,
-    updateAuthor
+    updateAuthor,
+    findArticlesByAuthorId
 }

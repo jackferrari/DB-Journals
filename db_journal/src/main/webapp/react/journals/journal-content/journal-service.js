@@ -1,4 +1,6 @@
 const JOURNAL_URL = "http://localhost:8080/api/journals"
+// needs to finish
+const ARTICLE_URL = "http://localhost:8080/api/..."
 
 export const findAllJournals = () =>
     fetch(JOURNAL_URL)
@@ -7,7 +9,6 @@ export const findAllJournals = () =>
 export const findJournalById = (id) =>
     fetch(`${JOURNAL_URL}/${id}`)
         .then(response => response.json())
-
 
 export const deleteJournal = (id) =>
     fetch(`${JOURNAL_URL}/${id}`, {
@@ -30,10 +31,15 @@ export const updateJournal = (id, journal) =>
     })
         .then(response => response.json())
 
+export const findArticlesByJournalId = (id) =>
+    fetch(ARTICLE_URL)
+        .then(response => response.json())
+
 export default {
     findAllJournals,
     findJournalById,
     deleteJournal,
     createJournal,
-    updateJournal
+    updateJournal,
+    findArticlesByJournalId
 }
