@@ -14,10 +14,10 @@ const App = () => {
                 <Route path="/authors/:id" exact={true}>
                     <AuthorFormEditor/>
                 </Route>
-                <Route path={["/authors", "/"]} exact={true}>
+                <Route path="/authors/:id/articles" exact={true}>
                     <ArticlesList/>
                 </Route>
-                <Route path={["/authors", "/"]} exact={true}>
+                <Route path="/authors/:id/users" exact={true}>
                     <UsersList/>
                 </Route>
             </HashRouter>
