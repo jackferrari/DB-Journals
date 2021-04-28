@@ -3,6 +3,8 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Author;
 import com.example.springtemplate.models.Editor;
 import com.example.springtemplate.models.User;
+import com.example.springtemplate.repositories.AuthorRepository;
+import com.example.springtemplate.repositories.EditorRepository;
 import com.example.springtemplate.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,8 @@ import java.util.List;
 public class UserOrmDao {
     @Autowired
     UserRepository userRepository;
+    AuthorRepository authorRepository;
+    EditorRepository editorRepository;
 
     @PostMapping("/api/users")
     public User createUser(@RequestBody User user) {
@@ -31,15 +35,15 @@ public class UserOrmDao {
     }
 
     @GetMapping("/api/users/{userId}/authors")
-    public List<Author> findUserAuthors(
+    public List<Author> findAuthorsOfUsers(
             @PathVariable("userId") Integer id) {
-        return userRepository.findAuthorsForUser(id);
+        return authorRepository.findAuthorsForUser(id);
     }
 
     @GetMapping("/api/users/{userId}/editors")
-    public List<Editor> findUserEditors(
+    public List<Editor> findEditorsOfUsers(
             @PathVariable("userId") Integer id) {
-        return userRepository.findEditorsForUser(id);
+        return editorRepository.findEditorsForUser(id);
     }
     
     @PutMapping("/api/users/{userId}")

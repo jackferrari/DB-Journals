@@ -2,6 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Journal;
+import com.example.springtemplate.repositories.ArticleRepository;
 import com.example.springtemplate.repositories.JournalRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import java.util.List;
 public class JournalOrmDao {
     @Autowired
     JournalRepository journalRepository;
+    ArticleRepository articleRepository;
 
     @PostMapping("/api/journals")
     public Journal createJournal(@RequestBody Journal journal) {
@@ -41,7 +43,7 @@ public class JournalOrmDao {
     @GetMapping("/api/journals/{journalId}/articles")
     public List<Article> findArticlesById(
             @PathVariable("journalId") Integer id) {
-        return journalRepository.findArticlesById(id);
+        return articleRepository.findArticlesByJournalId(id);
     }
     
     @PutMapping("/api/journals/{journalId}")

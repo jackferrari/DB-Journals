@@ -6,6 +6,9 @@ import com.example.springtemplate.models.Editor;
 import com.example.springtemplate.models.Journal;
 import com.example.springtemplate.repositories.ArticleRepository;
 
+import com.example.springtemplate.repositories.AuthorRepository;
+import com.example.springtemplate.repositories.EditorRepository;
+import com.example.springtemplate.repositories.JournalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +26,9 @@ import java.util.List;
 public class ArticleOrmDao {
     @Autowired
     ArticleRepository articleRepository;
+    AuthorRepository authorRepository;
+    EditorRepository editorRepository;
+    JournalRepository journalRepository;
 
     @PostMapping("/api/articles")
     public Article createUser(@RequestBody Article article) {
@@ -43,19 +49,19 @@ public class ArticleOrmDao {
     @GetMapping("/api/articles/{articleId}/authors")
     public Author findAuthorById(
             @PathVariable("articleId") Integer id) {
-        return articleRepository.findAuthorById(id);
+        return authorRepository.findAuthorById(id);
     }
 
     @GetMapping("/api/articles/{articleId}/editors")
     public Editor findEditorById(
             @PathVariable("articleId") Integer id) {
-        return articleRepository.findEditorById(id);
+        return editorRepository.findEditorById(id);
     }
 
     @GetMapping("/api/articles/{articleId}/journals")
-    public Journal findJournalById(
+    public Journal findJournalByArticleId(
             @PathVariable("articleId") Integer id) {
-        return articleRepository.findJournalById(id);
+        return journalRepository.findJournalByArticleId(id);
     }
     
     @PutMapping("/api/articles/{articleId}")

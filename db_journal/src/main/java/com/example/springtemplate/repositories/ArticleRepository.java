@@ -16,10 +16,14 @@ public interface ArticleRepository
     @Query(value = "SELECT * FROM articles WHERE id=:articleId",
             nativeQuery = true)
     public Article findArticleById(@Param("articleId") Integer id);
-
-    public Author findAuthorById(@Param("articleId") Integer id);
-
-    public Editor findEditorById(@Param("articleId") Integer id);
-
-    public Journal findJournalById(@Param("articleId") Integer id);
+    @Query(value = "SELECT * FROM articles WHERE id=:authorId",
+            nativeQuery = true)
+    public List<Article> findArticlesOfAuthors(@Param("authorId") Integer id);
+    @Query(value = "SELECT * FROM editors WHERE id=:editorId",
+            nativeQuery = true)
+    public List<Article> findArticlesOfEditors(@Param("editorId") Integer id);
+    @Query(value = "SELECT articles.id, articles.title, articles.content, articles.bibliography," +
+            "articles.author, articles.editor, articles.journal FROM articles, journals WHERE id=:journalId" +
+            "AND articles.journal=journals.id", nativeQuery = true)
+    public List<Article> findArticlesByJournalId(@Param("journalId") Integer id);
 }

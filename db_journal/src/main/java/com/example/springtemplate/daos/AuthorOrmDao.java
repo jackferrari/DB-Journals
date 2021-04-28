@@ -4,6 +4,8 @@ import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Author;
 import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.AuthorRepository;
+import com.example.springtemplate.repositories.ArticleRepository;
+import com.example.springtemplate.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 public class AuthorOrmDao {
     @Autowired
     AuthorRepository authorRepository;
+    ArticleRepository articleRepository;
+    UserRepository userRepository;
 
     @PostMapping("/api/authors")
     public Author createAuthor(@RequestBody Author author) {
@@ -26,12 +30,12 @@ public class AuthorOrmDao {
 
     @GetMapping("/api/authors/{authorId}/articles")
     public List<Article> findArticlesOfAuthors(@PathVariable("authorId") Integer id) {
-        return authorRepository.findArticlesOfAuthors(id);
+        return articleRepository.findArticlesOfAuthors(id);
     }
 
-    @GetMapping("/api/authors/{authorId}/articles")
-    public List<User> findAuthorUsers(@PathVariable("authorId") Integer id) {
-        return authorRepository.findAuthorUsers(id);
+    @GetMapping("/api/authors/{authorId}/users")
+    public List<User> findUsersOfAuthors(@PathVariable("authorId") Integer id) {
+        return userRepository.findAuthorUsers(id);
     }
     
     @GetMapping("/api/authors/{authorId}")
