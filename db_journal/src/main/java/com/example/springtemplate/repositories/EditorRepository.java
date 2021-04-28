@@ -23,8 +23,8 @@ public interface EditorRepository
             nativeQuery = true)
     public List<Editor> findEditorsForUser(@Param("userId") Integer id);
 
-    @Query(value = "SELECT editors.role, editors.user_id FROM" +
-            " editors, articles WHERE articles.id=? AND id:=articleId",
+    @Query(value = "select * from editors, ( Select editor from articles where id=:articleId) " +
+            "as wanted_editor where editors.id = wanted_editor.editor;",
             nativeQuery = true)
     public Editor findEditorByArticleId(@Param("articleId") Integer id);
 
