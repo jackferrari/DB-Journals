@@ -15,7 +15,11 @@ import java.util.List;
 public class EditorOrmDao {
     @Autowired
     EditorRepository editorRepository;
+
+    @Autowired
     ArticleRepository articleRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @PostMapping("/api/editors")
