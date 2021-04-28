@@ -1,23 +1,22 @@
 const {Link,useHistory} = window.ReactRouterDOM;
-
-import authorService from "../../authors/author-content/author-service"
+import articleService from "./article-service"
 const { useState, useEffect } = React;
 const AuthorList = () => {
+    const {id} = useParams()
     const [authors, setAuthors] = useState([])
     useEffect(() => {
-        findAllAuthors()
+        if(id !== "new") {
+            articleService.findAuthorByArticleId(id)
+        }
     }, [])
-    const findAllAuthors = () =>
-        authorService.findAllAuthors()
-            .then(authors => setAuthors(authors))
     return(
         <div>
             <h2>Author of The Article</h2>
             <ul className="list-group">
                 {
                     authors.map(author =>
-                        <li className="btn" key={author.id}>
-                            <Link className="btn btn-light btn-block" to={`/authors/${author.id}`}>
+                        <li className="btn" key={authors.id}>
+                            <Link className="btn btn-light btn-block" to={`/articles/${article.id}/authors`}>
                                 {author.primaryTopic}
                             </Link>
                         </li>)
