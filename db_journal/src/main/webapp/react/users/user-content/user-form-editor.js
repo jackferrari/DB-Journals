@@ -72,6 +72,9 @@ const UserFormEditor = () => {
                         onClick={() => updateUser(user.id, user)}>
                             Save
                     </button>
+                    <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/users")}>
+                            View Author Users
+                    </button>
             </div>
         )
 }
