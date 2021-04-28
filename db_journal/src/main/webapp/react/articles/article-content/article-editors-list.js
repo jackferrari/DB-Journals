@@ -1,6 +1,6 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import editorService from "./editor-service"
+import editorService from "../../editors/editor-content/editor-service"
 const { useState, useEffect } = React;
 const EditorList = () => {
     const [editors, setEditors] = useState([])

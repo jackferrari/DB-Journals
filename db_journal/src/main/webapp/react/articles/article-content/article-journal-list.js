@@ -1,6 +1,6 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import journalService from "./journal-service"
+import journalService from "../../journals/journal-content/journal-service"
 const { useState, useEffect } = React;
 const JournalList = () => {
     const [journals, setJournals] = useState([])

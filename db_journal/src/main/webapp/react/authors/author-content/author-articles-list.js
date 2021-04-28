@@ -1,6 +1,6 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import articleService from "./article-service"
+import articleService from "../../articles/article-content/article-service"
 const { useState, useEffect } = React;
 const ArticleList = () => {
     const [articles, setArticles] = useState([])

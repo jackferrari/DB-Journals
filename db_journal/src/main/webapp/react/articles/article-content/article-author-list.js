@@ -1,6 +1,6 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import authorService from "./author-service"
+import authorService from "../../authors/author-content/author-service"
 const { useState, useEffect } = React;
 const AuthorList = () => {
     const [authors, setAuthors] = useState([])
