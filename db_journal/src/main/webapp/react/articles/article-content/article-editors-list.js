@@ -1,8 +1,9 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import editorService from "../../editors/editor-content/editor-service"
+import editorService from "./editor-service"
 const { useState, useEffect } = React;
 const EditorList = () => {
+    const history = useHistory()
     const [editors, setEditors] = useState([])
     useEffect(() => {
         findAllEditors()
@@ -12,7 +13,10 @@ const EditorList = () => {
             .then(editors => setEditors(editors))
     return(
         <div>
-            <h2>Editor List for The Article</h2>
+            <h2>Editor List</h2>
+            <button className="btn btn-primary" onClick={() => history.push("/editors/new")}>
+                Add Editor
+            </button>
             <ul className="list-group">
                 {
                     editors.map(editor =>
