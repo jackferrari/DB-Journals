@@ -26,8 +26,14 @@ import java.util.List;
 public class ArticleOrmDao {
     @Autowired
     ArticleRepository articleRepository;
+
+    @Autowired
     AuthorRepository authorRepository;
+
+    @Autowired
     EditorRepository editorRepository;
+
+    @Autowired
     JournalRepository journalRepository;
 
     @PostMapping("/api/articles")
@@ -47,15 +53,15 @@ public class ArticleOrmDao {
     }
 
     @GetMapping("/api/articles/{articleId}/authors")
-    public Author findAuthorById(
+    public List<Author> findAuthorById(
             @PathVariable("articleId") Integer id) {
-        return authorRepository.findAuthorById(id);
+        return authorRepository.findAuthorByArticleId(id);
     }
 
     @GetMapping("/api/articles/{articleId}/editors")
     public Editor findEditorById(
             @PathVariable("articleId") Integer id) {
-        return editorRepository.findEditorById(id);
+        return editorRepository.findEditorByArticleId(id);
     }
 
     @GetMapping("/api/articles/{articleId}/journals")
