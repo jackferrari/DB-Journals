@@ -18,12 +18,13 @@ public interface AuthorRepository
     @Query(value = "SELECT * FROM authors WHERE id=:authorId",
             nativeQuery = true)
     public Author findAuthorById(@Param("authorId") Integer id);
+
     @Query(value = "SELECT authors.primary_topic, authors.user_id FROM authors, articles WHERE id:=articleId " +
             "AND users.id=authors.user_id",
             nativeQuery = true)
     public Author findAuthorByArticleId(@Param("articleId") Integer id);
-    @Query(value = "SELECT users.first_name, users.last_name, users.username, users.username," +
-            "users.password, users.email, users.date_of_birth FROM users, authors WHERE id:=userId",
+
+    @Query(value = "SELECT * FROM authors WHERE user_id=:userId",
             nativeQuery = true)
     public List<Author> findAuthorsForUser(@Param("userId") Integer id);
 }
