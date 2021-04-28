@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 //import java.util.List;
 
@@ -15,6 +17,18 @@ public class Article {
     private int author;
     private int editor;
     private int journal;
+
+    @ManyToOne
+    @JsonIgnore
+    private Journal myJournal;
+
+    public Journal getMyJournal() {
+        return myJournal;
+    }
+
+    public void setMyJournal(Journal myJournal) {
+        this.myJournal = myJournal;
+    }
 
     public Article(String title, String content, String bibliography, int author, int editor, int journal) {
         this.title = title;

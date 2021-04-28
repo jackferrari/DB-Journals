@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -17,7 +19,17 @@ public class Journal {
     private String releaseDate;
     private Integer volume;
 
-    //@OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "myJournal")
+    private List<Article> articles;
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+//@OneToMany(mappedBy = "User")
     //@JsonIgnore
     //private List<Section> sections;
 

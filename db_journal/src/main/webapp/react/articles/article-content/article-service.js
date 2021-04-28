@@ -8,15 +8,15 @@ export const findArticleById = (id) =>
     fetch(`${ARTICLES_URL}/${id}`)
         .then(response => response.json())
 
-export const findArticleAuthor = (id) =>
+export const findAuthorByArticleId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/author`)
         .then(response => response.json())
 
-export const findArticleEditor = (id) =>
+export const findArticleByEditorId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/editor`)
         .then(response => response.json())
 
-export const findArticleJournal = (id) =>
+export const findArticleByJournalId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/journal`)
         .then(response => response.json())
 
@@ -46,5 +46,8 @@ export default {
     findArticleById,
     deleteArticle,
     createArticle,
-    updateArticle
+    updateArticle,
+    findAuthorByArticleId,
+    findArticleByEditorId,
+    findArticleByJournalId
 }
