@@ -3,12 +3,13 @@ const {Link,useHistory} = window.ReactRouterDOM;
 import articleService from "./article-service"
 const { useState, useEffect } = React;
 const ArticlesList = () => {
+    const {id} = useParams()
     const [articles, setArticles] = useState([])
     useEffect(() => {
-        findAllArticles()
+        findArticleByJournalId(id)
     }, [])
-    const findAllArticles = () =>
-        articleService.findAllArticles()
+    const findArticleByJournalId = () =>
+        articleService.findArticleByJournalId(id)
             .then(articles => setArticles(articles))
     return(
         <div>
