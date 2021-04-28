@@ -15,7 +15,11 @@ import java.util.List;
 public class UserOrmDao {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
     AuthorRepository authorRepository;
+
+    @Autowired
     EditorRepository editorRepository;
 
     @PostMapping("/api/users")
