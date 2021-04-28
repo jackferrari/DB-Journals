@@ -1,6 +1,4 @@
 const EDITORS_URL = "http://localhost:8080/api/editors"
-// needs to finish
-const ARTICLE_URL = "http://localhost:8080/api/..."
 
 export const findAllEditors = () =>
     fetch(EDITORS_URL)
@@ -49,10 +47,6 @@ export default {
     deleteEditor,
     createEditor,
     updateEditor,
-<<<<<<< HEAD
-    findArticlesByEditorId
-=======
     findArticlesByEditorId,
     findUsersByEditorId
->>>>>>> main
 }

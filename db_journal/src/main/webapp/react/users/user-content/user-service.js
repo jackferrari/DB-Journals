@@ -54,11 +54,6 @@ export default {
     deleteUser,
     createUser,
     updateUser,
-<<<<<<< HEAD
     findEditorsByUserId,
     findAuthorsByUserId
-=======
-    findAuthorsByUserId,
-    findEditorsByUserId
->>>>>>> main
 }
