@@ -10,6 +10,13 @@ export const findJournalById = (id) =>
     fetch(`${JOURNAL_URL}/${id}`)
         .then(response => response.json())
 
+<<<<<<< HEAD
+=======
+export const findArticleByJournalId = (id) =>
+    fetch(`${JOURNAL_URL}/${id}/articles`)
+        .then(response => response.json())
+
+>>>>>>> main
 export const deleteJournal = (id) =>
     fetch(`${JOURNAL_URL}/${id}`, {
         method: "DELETE"
@@ -41,5 +48,9 @@ export default {
     deleteJournal,
     createJournal,
     updateJournal,
+<<<<<<< HEAD
     findArticlesByJournalId
+=======
+    findArticleByJournalId
+>>>>>>> main
 }

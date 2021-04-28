@@ -10,6 +10,13 @@ export const findAuthorById = (id) =>
     fetch(`${AUTHORS_URL}/${id}`)
         .then(response => response.json())
 
+export const findArticlesByAuthorId = (id) =>
+    fetch(`${AUTHORS_URL}/${id}/articles`)
+        .then(response => response.json())
+
+export const findUsersByAuthorId = (id) =>
+    fetch(`${AUTHORS_URL}/${id}/articles`)
+        .then(response => response.json())
 
 export const deleteAuthor = (id) =>
     fetch(`${AUTHORS_URL}/${id}`, {
@@ -42,5 +49,10 @@ export default {
     deleteAuthor,
     createAuthor,
     updateAuthor,
+<<<<<<< HEAD
     findArticlesByAuthorId
+=======
+    findArticlesByAuthorId,
+    findUsersByAuthorId
+>>>>>>> main
 }
