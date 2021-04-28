@@ -1,7 +1,7 @@
 import ArticleList from "./article-content/article-list";
 import ArticleFormEditor from "./article-content/article-form-editor";
 import AuthorList from "./article-content/article-author-list";
-import EditorList from "./article-content/article-editors-list";
+import EditorList from "./article-content/article-editor-list";
 import JournalList from "./article-content/article-journal-list";
 const {HashRouter, Route} = window.ReactRouterDOM;
 const App = () => {
