@@ -17,10 +17,12 @@ public interface UserRepository
     @Query(value = "SELECT * FROM users WHERE id=:userId",
             nativeQuery = true)
     public User findUserById(@Param("userId") Integer id);
-    @Query(value = "SELECT * FROM authors WHERE user_id=:userId",
+    @Query(value = "SELECT users.first_name, users.last_name, users.username, users.username," +
+            "users.password, users.email, users.date_of_birth FROM users, authors WHERE id=:authorId",
             nativeQuery = true)
-    public List<Author> findAuthorsForUser(@Param("userId") Integer id);
-    @Query(value = "SELECT * FROM editors WHERE user_id=:userId",
+    public List<User> findAuthorUsers(@Param("authorId") Integer id);
+    @Query(value = "SELECT users.first_name, users.last_name, users.username, users.username," +
+            "users.password, users.email, users.date_of_birth  FROM users, editors WHERE id=:editorId",
             nativeQuery = true)
-    public List<Editor> findEditorsForUser(@Param("userId") Integer id);
+    public List<User> findEditorUsers(@Param("editorId") Integer id);
 }
