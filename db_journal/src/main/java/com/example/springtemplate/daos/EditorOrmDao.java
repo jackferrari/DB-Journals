@@ -3,7 +3,9 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Editor;
 import com.example.springtemplate.models.User;
+import com.example.springtemplate.repositories.ArticleRepository;
 import com.example.springtemplate.repositories.EditorRepository;
+import com.example.springtemplate.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 public class EditorOrmDao {
     @Autowired
     EditorRepository editorRepository;
+    ArticleRepository articleRepository;
+    UserRepository userRepository;
 
     @PostMapping("/api/editors")
     public Editor createEditor(@RequestBody Editor editor) {
@@ -32,12 +36,12 @@ public class EditorOrmDao {
 
     @GetMapping("/api/editors/{editorId}/articles")
     public List<Article> findArticlesOfEditors(@PathVariable("editorId") Integer id) {
-        return editorRepository.findArticlesOfEditors(id);
+        return articleRepository.findArticlesOfEditors(id);
     }
 
-    @GetMapping("/api/editors/{editorId}/articles")
-    public List<User> findEditorUsers(@PathVariable("editorId") Integer id) {
-        return editorRepository.findEditorUsers(id);
+    @GetMapping("/api/editors/{editorId}/users")
+    public List<User> findUsersOfEditors(@PathVariable("editorId") Integer id) {
+        return userRepository.findEditorUsers(id);
     }
     
     @PutMapping("/api/editors/{editorId}")
