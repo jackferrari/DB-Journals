@@ -30,5 +30,5 @@ const UserList = () => {
         </div>
     )
 }
-
+// history.push("/users/${user.id}/editors")
 export default UserList;
