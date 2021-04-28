@@ -27,9 +27,8 @@ public class JournalJdbcDao {
   String CREATE_JOURNAL = "INSERT INTO journals VALUES (null, ?, ?, ?, ?)";
   String FIND_ALL_JOURNALS = "SELECT * FROM journals";
   String FIND_JOURNAL_BY_ID = "SELECT * FROM journals WHERE id=?";
-  String FIND_ARTICLES_BY_ID = "SELECT articles.id, articles.title, articles.content, articles.bibliography, articles.author, articles.editor, articles.journal" +
-          " FROM articles, journals WHERE id=? AND articles.journal=journals.id";
-  String DELETE_JOURNAL = "DELETE FROM journals WHERE id=?";
+  String FIND_ARTICLES_BY_ID = "select * from articles where journal=?";
+  String FIND_ARTICLES_FOR_JOURNAL = "select * from articles where journal=?";
   String UPDATE_JOURNAL = "UPDATE journals SET name=?, topic=?, release_date=?, volume=? WHERE id=?";
 
   private Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -113,15 +112,15 @@ public class JournalJdbcDao {
     return articles;
   }
 
-  public Integer deleteJournal(Integer id) throws SQLException, ClassNotFoundException {
-    Integer rowsDeleted = 0;
-    connection = getConnection();
-    statement = connection.prepareStatement(DELETE_JOURNAL);
-    statement.setInt(1, id);
-    rowsDeleted = statement.executeUpdate();
-    closeConnection(connection);
-    return rowsDeleted;
-  }
+//  public Integer deleteJournal(Integer id) throws SQLException, ClassNotFoundException {
+//    Integer rowsDeleted = 0;
+//    connection = getConnection();
+//    statement = connection.prepareStatement(DELETE_JOURNAL);
+//    statement.setInt(1, id);
+//    rowsDeleted = statement.executeUpdate();
+//    closeConnection(connection);
+//    return rowsDeleted;
+//  }
 
   public Integer updateJournal(Integer journalId, Journal newJournal) throws SQLException, ClassNotFoundException {
     Integer rowsUpdated = 0;
