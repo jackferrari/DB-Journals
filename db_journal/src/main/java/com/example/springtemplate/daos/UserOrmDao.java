@@ -39,7 +39,7 @@ public class UserOrmDao {
     }
 
     @GetMapping("/api/users/{userId}/authors")
-    public List<Author> findAuthorsOfUsers(
+    public List<Author> findUserAuthors(
             @PathVariable("userId") Integer id) {
         return authorRepository.findAuthorsForUser(id);
     }
