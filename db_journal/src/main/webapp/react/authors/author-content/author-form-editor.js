@@ -77,10 +77,10 @@ const AuthorFormEditor = () => {
                 onClick={() => updateAuthor(author.id, author)}>
                 Save
             </button>
-            <button className="btn btn-primary" onClick={() => history.push("/authors/${user.id}/articles")}>
+            <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/articles")}>
                 View Articles of Author
             </button>
-            <button className="btn btn-primary" onClick={() => history.push("/authors/${user.id}/users")}>
+            <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/users")}>
                 View Users of Author
             </button>
         </div>
