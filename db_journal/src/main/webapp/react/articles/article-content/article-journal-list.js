@@ -1,23 +1,26 @@
-const {Link,useHistory} = window.ReactRouterDOM;
-
-import journalService from "../../journals/journal-content/journal-service"
+const {Link,useHistory, useParams} = window.ReactRouterDOM;
+import articleService from "./article-service"
 const { useState, useEffect } = React;
-const JournalList = () => {
+const ArticleJournalList = () => {
+    const history = useHistory()
+    const {id} = useParams()
     const [journals, setJournals] = useState([])
     useEffect(() => {
-        findAllJournals()
-    }, [])
-    const findAllJournals = () =>
-        journalService.findAllJournals()
+        if(id !== "new") {
+            findJournalByArticleId(id)
+        }
+    }, []);
+    const findJournalByArticleId = (id) =>
+        articleService.findJournalByArticleId(id)
             .then(journals => setJournals(journals))
     return(
         <div>
-            <h2>Journal of This Article</h2>
+            <h2>Journal</h2>
             <ul className="list-group">
                 {
                     journals.map(journal =>
                         <li className="btn" key={journal.id}>
-                            <Link className="btn btn-light btn-block" to={`/journals/${journal.id}`}>
+                            <Link className="btn btn-light btn-block" to={`/articles/${journal.id}/journal`}>
                                 {journal.name}
                             </Link>
                         </li>)
@@ -27,4 +30,4 @@ const JournalList = () => {
     )
 }
 
-export default JournalList;
+export default ArticleJournalList;
