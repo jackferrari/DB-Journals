@@ -55,6 +55,11 @@ const ArticleFormEditor = () => {
                 setArticle(article =>
                     ({...article, journal: e.target.value}))}
                    value={article.journal}/><br/>
+            {/*<button*/}
+            {/*    onClick={() => {*/}
+            {/*        history.push}}>*/}
+            {/*    Check for related author*/}
+            {/*</button>*/}
             <button
                 onClick={() => {
                     history.goBack()}}>
