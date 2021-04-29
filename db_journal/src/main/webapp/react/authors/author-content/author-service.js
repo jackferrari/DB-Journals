@@ -1,6 +1,4 @@
 const AUTHORS_URL = "http://localhost:8080/api/authors"
-// needs to finish
-const ARTICLE_URL = "http://localhost:8080/api/..."
 
 export const findAllAuthors = () =>
     fetch(AUTHORS_URL)
@@ -47,5 +45,4 @@ export default {
     updateAuthor,
     findArticlesByAuthorId,
     findUsersByAuthorId
-
 }

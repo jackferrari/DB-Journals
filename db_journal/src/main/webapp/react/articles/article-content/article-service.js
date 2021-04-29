@@ -12,11 +12,11 @@ export const findAuthorByArticleId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/author`)
         .then(response => response.json())
 
-export const findArticleByEditorId = (id) =>
+export const findEditorByArticleId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/editor`)
         .then(response => response.json())
 
-export const findArticleByJournalId = (id) =>
+export const findJournalByArticleId = (id) =>
     fetch(`${ARTICLES_URL}/${id}/journal`)
         .then(response => response.json())
 
@@ -48,6 +48,6 @@ export default {
     createArticle,
     updateArticle,
     findAuthorByArticleId,
-    findArticleByEditorId,
-    findArticleByJournalId
+    findEditorByArticleId,
+    findJournalByArticleId
 }

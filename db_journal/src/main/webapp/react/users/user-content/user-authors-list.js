@@ -1,14 +1,14 @@
-const {Link,useHistory} = window.ReactRouterDOM;
-
-import authorService from "./author-service"
+const {Link, useHistory, useParams} = window.ReactRouterDOM;
+import userService from "./user-service"
 const { useState, useEffect } = React;
-const AuthorList = () => {
+const AuthorsList = () => {
+    const {id} = useParams()
     const [authors, setAuthors] = useState([])
     useEffect(() => {
-        findAllAuthors()
+        findAuthorsByUserId()
     }, [])
-    const findAllAuthors = () =>
-        authorService.findAllAuthors()
+    const findAuthorsByUserId = () =>
+        userService.findAuthorsByUserId(id)
             .then(authors => setAuthors(authors))
     return(
         <div>
@@ -17,9 +17,9 @@ const AuthorList = () => {
                 {
                     authors.map(author =>
                         <li className="btn" key={author.id}>
-                            <Link className="btn btn-light btn-block" to={`/authors/${author.id}`}>
-                                {author.primaryTopic}
-                            </Link>
+                            <a className="btn btn-light btn-block" href={`../authors/author.html#/authors/${author.id}`}>
+                                {author.topic}
+                            </a>
                         </li>)
                 }
             </ul>
@@ -27,4 +27,4 @@ const AuthorList = () => {
     )
 }
 
-export default AuthorList;
+export default AuthorsList;

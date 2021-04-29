@@ -62,6 +62,9 @@ const JournalFormEditor = () => {
                         onClick={() => updateJournal(journal.id, journal)}>
                             Save
                     </button>
+                    <button className="btn btn-primary" onClick={() => history.push(`/journals/${journal.id}/articles`)}>
+                        View Articles of Journal
+                    </button>
             </div>
         )
 }
