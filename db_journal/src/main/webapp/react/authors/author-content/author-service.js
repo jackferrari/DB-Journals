@@ -15,7 +15,7 @@ export const findArticlesByAuthorId = (id) =>
         .then(response => response.json())
 
 export const findUsersByAuthorId = (id) =>
-    fetch(`${AUTHORS_URL}/${id}/articles`)
+    fetch(`${AUTHORS_URL}/${id}/users`)
         .then(response => response.json())
 
 export const deleteAuthor = (id) =>

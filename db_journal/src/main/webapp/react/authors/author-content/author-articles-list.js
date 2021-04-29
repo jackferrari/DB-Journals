@@ -11,7 +11,6 @@ const ArticlesList = () => {
     const findArticlesByAuthorId = () =>
         authorService.findArticlesByAuthorId(id)
             .then(articles => setArticles(articles))
-    console.log(articles);
     return(
         <div>
             <h2>Articles List for This Author</h2>
@@ -19,7 +18,7 @@ const ArticlesList = () => {
                 {
                     articles.map(article =>
                         <li className="btn" key={article.id}>
-                            <a className="btn btn-light btn-block" href={`react/articles/article.html#/articles/${article.id}`}>
+                            <a className="btn btn-light btn-block" href={`../articles/article.html#/articles/${article.id}`}>
                                 {article.title}
                             </a>
                         </li>)

@@ -3,6 +3,7 @@ const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 const UserFormEditor = () => {
         const {id} = useParams()
+        console.log(id)
         const [user, setUser] = useState({})
         const history = useHistory()
         useEffect(() => {
