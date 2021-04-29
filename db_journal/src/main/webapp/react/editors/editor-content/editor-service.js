@@ -37,10 +37,6 @@ export const updateEditor = (id, editor) =>
     })
         .then(response => response.json())
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 export default {
     findAllEditors,
     findEditorById,
