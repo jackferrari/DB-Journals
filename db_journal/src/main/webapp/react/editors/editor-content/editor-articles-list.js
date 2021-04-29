@@ -1,14 +1,15 @@
 const {Link,useHistory} = window.ReactRouterDOM;
 
-import articleService from "./article-service"
+import editorService from "./editor-service"
 const { useState, useEffect } = React;
-const ArticleList = () => {
+const ArticlesList = () => {
+    const {id} = useParams()
     const [articles, setArticles] = useState([])
     useEffect(() => {
-        findAllArticles()
+        findArticlesByEditorId()
     }, [])
-    const findAllArticles = () =>
-        articleService.findAllArticles()
+    const findArticlesByEditorId = () =>
+        editorService.findArticlesByEditorId(id)
             .then(articles => setArticles(articles))
     return(
         <div>
@@ -17,9 +18,9 @@ const ArticleList = () => {
                 {
                     articles.map(article =>
                         <li className="btn" key={articles.id}>
-                            <Link className="btn btn-light btn-block" to={`/articles/${article.id}`}>
+                            <a className="btn btn-light btn-block" href={`../articles/article.html#/articles/${article.id}`}>
                                 {article.title}
-                            </Link>
+                            </a>
                         </li>)
                 }
             </ul>
@@ -27,4 +28,4 @@ const ArticleList = () => {
     )
 }
 
-export default ArticleList;
+export default ArticlesList;
