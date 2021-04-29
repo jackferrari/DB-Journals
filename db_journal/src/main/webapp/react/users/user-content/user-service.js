@@ -1,7 +1,4 @@
 const USERS_URL = "http://localhost:8080/api/users"
-// Needs to complete
-const EDITORS_URL = "http://localhost:8080/api/..."
-const AUTHORS_URL = "http://localhost:8080/api/..."
 
 export const findAllUsers = () =>
     fetch(USERS_URL)
@@ -39,14 +36,6 @@ export const updateUser = (id, user) =>
         headers: {'content-type': 'application/json'}
     })
         .then(response => response.json())
-
-export const findEditorsByUserId = (id) =>
-    fetch(`${EDITORS_URL}/${id}`)
-        .then(response => response.json())
-
-export const findAuthorsByUserId = (id) =>
-fetch(`${AUTHORS_URL}/${id}`)
-    .then(response => response.json())
 
 export default {
     findAllUsers,

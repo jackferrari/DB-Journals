@@ -11,6 +11,7 @@ const AuthorList = () => {
     const findAllAuthors = () =>
         authorService.findAllAuthors()
             .then(authors => setAuthors(authors))
+    console.log(authors);
     return(
         <div>
             <h2>Author List</h2>
@@ -19,10 +20,11 @@ const AuthorList = () => {
             </button>
             <ul className="list-group">
                 {
+
                     authors.map(author =>
                         <li className="btn" key={author.id}>
                             <Link className="btn btn-light btn-block" to={`/authors/${author.id}`}>
-                                {author.primaryTopic}
+                                {author.topic}
                             </Link>
                         </li>)
                 }

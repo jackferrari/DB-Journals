@@ -1,8 +1,6 @@
 package com.example.springtemplate.repositories;
 
-import com.example.springtemplate.models.Article;
 import com.example.springtemplate.models.Journal;
-import com.example.springtemplate.models.User;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
