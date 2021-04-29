@@ -39,10 +39,6 @@ export const updateAuthor = (id, author) =>
     })
         .then(response => response.json())
 
-export const findArticlesByAuthorId = (id) =>
-    fetch(ARTICLE_URL)
-        .then(response => response.json())
-
 export default {
     findAllAuthors,
     findAuthorById,

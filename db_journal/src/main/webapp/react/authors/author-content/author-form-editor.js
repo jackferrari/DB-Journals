@@ -28,8 +28,8 @@ const AuthorFormEditor = () => {
             <label>Primary Topic</label>
             <input onChange={(e) =>
                 setAuthor(author =>
-                    ({...author, primaryTopic: e.target.value}))}
-                   value={author.primaryTopic}/><br/>
+                    ({...author, topic: e.target.value}))}
+                   value={author.topic}/><br/>
             <label>User ID</label>
             <input onChange={(e) =>
                 setAuthor(author =>
@@ -77,10 +77,10 @@ const AuthorFormEditor = () => {
                 onClick={() => updateAuthor(author.id, author)}>
                 Save
             </button>
-            <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/articles")}>
+            <button className="btn btn-primary" onClick={() => history.push(`/authors/${author.id}/articles`)}>
                 View Articles of Author
             </button>
-            <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/users")}>
+            <button className="btn btn-primary" onClick={() => history.push(`/authors/${author.id}/users`)}>
                 View Users of Author
             </button>
         </div>
