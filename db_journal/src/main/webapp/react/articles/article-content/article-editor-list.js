@@ -15,14 +15,12 @@ const ArticleEditorList = () => {
         <div>
             <h2>Editor List</h2>
             <ul className="list-group">
-                {
-                    editors.map(editor =>
-                        <li className="btn" key={editor.id}>
-                            <a className="btn btn-light btn-block" href={`../editors/editor.html#/editors/${editor.id}`}>
-                                {editor.role}
-                            </a>
-                        </li>)
-                }
+                <li className="btn" key={editors.id}>
+                    <a className="btn btn-light btn-block"
+                       href={`../editors/editor.html#/editors/${editors.id}`}>
+                        {editors.role}
+                    </a>
+                </li>
             </ul>
         </div>
     )
