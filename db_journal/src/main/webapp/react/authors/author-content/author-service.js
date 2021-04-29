@@ -45,8 +45,4 @@ export default {
     updateAuthor,
     findArticlesByAuthorId,
     findUsersByAuthorId
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 }

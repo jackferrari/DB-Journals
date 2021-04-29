@@ -1,10 +1,7 @@
 const {Link, useHistory, useParams} = window.ReactRouterDOM;
 
-<<<<<<< HEAD
-import articleService from "../../articles/article-content/article-service"
-=======
+
 import authorService from "./author-service"
->>>>>>> main
 const { useState, useEffect } = React;
 const ArticlesList = () => {
     const {id} = useParams()

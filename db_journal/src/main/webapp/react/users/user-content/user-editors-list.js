@@ -1,25 +1,25 @@
-const {Link,useHistory} = window.ReactRouterDOM;
-
-import editorService from "./editor-service"
+const {useParams} = window.ReactRouterDOM;
+import userService from "./user-service"
 const { useState, useEffect } = React;
-const EditorList = () => {
+const EditorsList = () => {
+    const {id} = useParams()
     const [editors, setEditors] = useState([])
     useEffect(() => {
-        findAllEditors()
+        findEditorsByUserId()
     }, [])
-    const findAllEditors = () =>
-        editorService.findAllEditors()
+    const findEditorsByUserId = () =>
+        userService.findEditorsByUserId(id)
             .then(editors => setEditors(editors))
     return(
         <div>
-            <h2>Editors List for Users</h2>
+            <h2>Editors List for User</h2>
             <ul className="list-group">
                 {
                     editors.map(editor =>
                         <li className="btn" key={editor.id}>
-                            <Link className="btn btn-light btn-block" to={`/editors/${editor.id}`}>
+                            <a className="btn btn-light btn-block" href={`../editors/editor.html#/editors/${editor.id}`}>
                                 {editor.role}
-                            </Link>
+                            </a>
                         </li>)
                 }
             </ul>
@@ -27,4 +27,4 @@ const EditorList = () => {
     )
 }
 
-export default EditorList;
+export default EditorsList;
