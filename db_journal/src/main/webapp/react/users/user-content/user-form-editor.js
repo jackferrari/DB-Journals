@@ -3,6 +3,7 @@ const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 const UserFormEditor = () => {
         const {id} = useParams()
+        console.log(id)
         const [user, setUser] = useState({})
         const history = useHistory()
         useEffect(() => {
@@ -71,6 +72,9 @@ const UserFormEditor = () => {
                     <button
                         onClick={() => updateUser(user.id, user)}>
                             Save
+                    </button>
+                    <button className="btn btn-primary" onClick={() => history.push("/authors/${author.id}/users")}>
+                            View Author Users
                     </button>
             </div>
         )

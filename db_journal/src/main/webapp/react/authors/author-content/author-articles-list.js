@@ -1,14 +1,16 @@
-const {Link,useHistory} = window.ReactRouterDOM;
+const {Link, useHistory, useParams} = window.ReactRouterDOM;
 
-import articleService from "./article-service"
+
+import authorService from "./author-service"
 const { useState, useEffect } = React;
-const ArticleList = () => {
+const ArticlesList = () => {
+    const {id} = useParams()
     const [articles, setArticles] = useState([])
     useEffect(() => {
-        findAllArticles()
+        findArticlesByAuthorId()
     }, [])
-    const findAllArticles = () =>
-        articleService.findAllArticles()
+    const findArticlesByAuthorId = () =>
+        authorService.findArticlesByAuthorId(id)
             .then(articles => setArticles(articles))
     return(
         <div>
@@ -16,10 +18,10 @@ const ArticleList = () => {
             <ul className="list-group">
                 {
                     articles.map(article =>
-                        <li className="btn" key={articles.id}>
-                            <Link className="btn btn-light btn-block" to={`/articles/${article.id}`}>
+                        <li className="btn" key={article.id}>
+                            <a className="btn btn-light btn-block" href={`../articles/article.html#/articles/${article.id}`}>
                                 {article.title}
-                            </Link>
+                            </a>
                         </li>)
                 }
             </ul>
@@ -27,4 +29,4 @@ const ArticleList = () => {
     )
 }
 
-export default ArticleList;
+export default ArticlesList;
