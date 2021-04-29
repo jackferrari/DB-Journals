@@ -1,4 +1,4 @@
-const {Link,useHistory} = window.ReactRouterDOM;
+const {Link,useHistory, useParams} = window.ReactRouterDOM;
 
 import editorService from "./editor-service"
 const { useState, useEffect } = React;
