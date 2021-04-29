@@ -6,11 +6,9 @@ const ArticleEditorList = () => {
     const {id} = useParams()
     const [editors, setEditors] = useState([])
     useEffect(() => {
-        if(id !== "new") {
-            findEditorByArticleId(id)
-        }
+        findEditorByArticleId()
     }, []);
-    const findEditorByArticleId = (id) =>
+    const findEditorByArticleId = () =>
         articleService.findEditorByArticleId(id)
             .then(editors => setEditors(editors))
     return(
@@ -20,9 +18,9 @@ const ArticleEditorList = () => {
                 {
                     editors.map(editor =>
                         <li className="btn" key={editor.id}>
-                            <Link className="btn btn-light btn-block" to={`/articles/${editor.id}/editor`}>
+                            <a className="btn btn-light btn-block" href={`../editors/editor.html#/editors/${editor.id}`}>
                                 {editor.role}
-                            </Link>
+                            </a>
                         </li>)
                 }
             </ul>

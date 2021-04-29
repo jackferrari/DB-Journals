@@ -77,6 +77,15 @@ const ArticleFormEditor = () => {
                 onClick={() => updateArticle(article.id, article)}>
                 Save
             </button>
+            <button className="btn btn-primary" onClick={() => history.push(`/articles/${article.id}/authors`)}>
+                View Authors of Article
+            </button>
+            <button className="btn btn-primary" onClick={() => history.push(`/articles/${article.id}/editors`)}>
+                View Editors of Article
+            </button>
+            <button className="btn btn-primary" onClick={() => history.push(`/articles/${article.id}/journals`)}>
+                View Journal of Article
+            </button>
         </div>
     )
 }

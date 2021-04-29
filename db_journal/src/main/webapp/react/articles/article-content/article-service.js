@@ -9,15 +9,15 @@ export const findArticleById = (id) =>
         .then(response => response.json())
 
 export const findAuthorByArticleId = (id) =>
-    fetch(`${ARTICLES_URL}/${id}/author`)
+    fetch(`${ARTICLES_URL}/${id}/authors`)
         .then(response => response.json())
 
 export const findEditorByArticleId = (id) =>
-    fetch(`${ARTICLES_URL}/${id}/editor`)
+    fetch(`${ARTICLES_URL}/${id}/editors`)
         .then(response => response.json())
 
 export const findJournalByArticleId = (id) =>
-    fetch(`${ARTICLES_URL}/${id}/journal`)
+    fetch(`${ARTICLES_URL}/${id}/journals`)
         .then(response => response.json())
 
 export const deleteArticle = (id) =>
