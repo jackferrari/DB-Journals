@@ -6,25 +6,21 @@ const ArticleJournalList = () => {
     const {id} = useParams()
     const [journals, setJournals] = useState([])
     useEffect(() => {
-        if(id !== "new") {
-            findJournalByArticleId(id)
-        }
+        findJournalByArticleId()
     }, []);
-    const findJournalByArticleId = (id) =>
+    const findJournalByArticleId = () =>
         articleService.findJournalByArticleId(id)
             .then(journals => setJournals(journals))
+    console.log(journals)
     return(
         <div>
             <h2>Journal</h2>
             <ul className="list-group">
-                {
-                    journals.map(journal =>
-                        <li className="btn" key={journal.id}>
-                            <Link className="btn btn-light btn-block" to={`/articles/${journal.id}/journal`}>
-                                {journal.name}
-                            </Link>
-                        </li>)
-                }
+                        <li className="btn" key={journals.id}>
+                            <a className="btn btn-light btn-block" href={`../journals/journal.html#/journals/${journals.id}`}>
+                                {journals.name}
+                            </a>
+                        </li>
             </ul>
         </div>
     )
