@@ -18,12 +18,13 @@ public interface EditorRepository
     @Query(value = "SELECT * FROM editors WHERE id=:editorId",
             nativeQuery = true)
     public Editor findEditorById(@Param("editorId") Integer id);
-    @Query(value = "SELECT users.first_name, users.last_name, users.username, users.username," +
-            "users.password, users.email, users.date_of_birth FROM users, editors WHERE id:=userId",
+
+    @Query(value = "SELECT * FROM editors WHERE user_id=:userId",
             nativeQuery = true)
     public List<Editor> findEditorsForUser(@Param("userId") Integer id);
-    @Query(value = "SELECT editors.role, editors.user_id FROM" +
-            " editors, articles WHERE articles.id=? AND id:=articleId",
+
+    @Query(value = "select * from editors, ( Select editor from articles where id=:articleId) " +
+            "as wanted_editor where editors.id = wanted_editor.editor;",
             nativeQuery = true)
     public Editor findEditorByArticleId(@Param("articleId") Integer id);
 

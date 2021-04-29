@@ -18,8 +18,8 @@ public interface JournalRepository
             nativeQuery = true)
     public Journal findJournalById(@Param("journalId") Integer id);
 
-    @Query (value = "SELECT journals.name, journals.topic, journals.release_date, journals.volume " +
-            "FROM journals, articles WHERE article.id=:articleId AND articles.journal=journals.id",
+    @Query (value = "select * from journals, ( Select journal from articles where id =:articleId) " +
+            "as wanted_journal where journals.id = wanted_journal.journal",
             nativeQuery = true)
     public Journal findJournalByArticleId(@Param("articleId") Integer id);
 }
