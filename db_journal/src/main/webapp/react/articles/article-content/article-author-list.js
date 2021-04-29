@@ -18,9 +18,9 @@ const ArticleAuthorList = () => {
                 {
                     authors.map(author =>
                         <li className="btn" key={author.id}>
-                            <Link className="btn btn-light btn-block" to={`/articles/${author.id}/author`}>
-                                {author.primaryTopic}
-                            </Link>
+                            <a className="btn btn-light btn-block" href={`../authors/author.html#/authors/${author.id}`}>
+                                {author.topic}
+                            </a>
                         </li>)
                 }
             </ul>

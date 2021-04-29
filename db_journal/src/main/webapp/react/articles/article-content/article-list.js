@@ -20,7 +20,7 @@ const ArticleList = () => {
             <ul className="list-group">
                 {
                     articles.map(article =>
-                        <li className="btn" key={articles.id}>
+                        <li className="btn" key={article.id}>
                             <Link className="btn btn-light btn-block" to={`/articles/${article.id}`}>
                                 {article.title}
                             </Link>
