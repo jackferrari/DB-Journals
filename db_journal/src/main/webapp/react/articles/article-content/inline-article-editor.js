@@ -27,11 +27,11 @@ const InlineArticleEditor = ({article, deleteArticle, updateArticle}) => {
                             value={articleCopy.bibliography}
                             onChange={(e)=>setArticleCopy(articleCopy => ({...articleCopy, bibliography: e.target.value}))}/>
                     </div>
-                    {/*<div className="col-1">*/}
-                    {/*    <Link to={`/articles/${articleCopy.id}/bibliography`}>*/}
-                    {/*        Bibliography*/}
-                    {/*    </Link>*/}
-                    {/*</div>*/}
+                    <div className="col-1">
+                        <Link to={`/articles/${articleCopy.id}/bibliography`}>
+                            Bibliography
+                        </Link>
+                    </div>
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
@@ -63,11 +63,11 @@ const InlineArticleEditor = ({article, deleteArticle, updateArticle}) => {
                             {articleCopy.bibliography}
                         </Link>
                     </div>
-                    {/*<div className="col-1">*/}
-                    {/*    <Link to={`/articles/${articleCopy.id}`}>*/}
-                    {/*        Blogs*/}
-                    {/*    </Link>*/}
-                    {/*</div>*/}
+                    <div className="col-1">
+                        <Link to={`/articles/${articleCopy.id}`}>
+                            Blogs
+                        </Link>
+                    </div>
                     <div className="col-2">
                         <i className="fas fa-cog fa-2x float-right"
                            onClick={() => setEditing(true)}></i>
