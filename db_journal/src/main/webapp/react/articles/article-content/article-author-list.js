@@ -6,11 +6,9 @@ const ArticleAuthorList = () => {
     const {id} = useParams()
     const [authors, setAuthors] = useState([])
     useEffect(() => {
-        if(id !== "new") {
-            findAuthorByArticleId(id)
-        }
+            findAuthorByArticleId()
     }, []);
-    const findAuthorByArticleId = (id) =>
+    const findAuthorByArticleId = () =>
         articleService.findAuthorByArticleId(id)
             .then(authors => setAuthors(authors))
     return(
