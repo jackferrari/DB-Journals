@@ -37,9 +37,6 @@ export const updateEditor = (id, editor) =>
     })
         .then(response => response.json())
 
-export const findArticlesByEditorId = (id) =>
-    fetch(ARTICLE_URL)
-        .then(response => response.json())
 
 export default {
     findAllEditors,
