@@ -1,4 +1,4 @@
-const {useParams} = window.ReactRouterDOM;
+const {Link, useHistory, useParams} = window.ReactRouterDOM;
 import userService from "./user-service"
 const { useState, useEffect } = React;
 const AuthorsList = () => {
